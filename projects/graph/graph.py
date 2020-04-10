@@ -28,14 +28,14 @@ class Graph:
         Get all neighbors (edges) of a vertex.
         """
         
-       return self.vertices[vertex_id]
+        return self.vertices[vertex_id]
 
     def bft(self, starting_vertex):
         """
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-         q = Queue() # create an empty queue
+        q = Queue() # create an empty queue
         q.enqueue(starting_vertex) # enqueue the starting_vertex
         visited = set()  # create a set to track vertices we have visited
         while q.size() > 0: # while the queue isn't empty:
@@ -46,7 +46,7 @@ class Graph:
                 neighbors = self.get_neighbors(current_node) # get its neighbors
                 for neighbor in neighbors: # and add each to the back of queue
                     q.enqueue(neighbor)
-       return visited
+        return visited
 
     def dft(self, starting_vertex):
         """
@@ -63,11 +63,10 @@ class Graph:
                 print(current_node)
                 visited.add(current_node) # mark it as visited
                 neighbors = self.get_neighbors(current_node)  # get its neighbors
-                ### and add each neighbor to the top of the stack
-                for neighbor in neighbors:
+                for neighbor in neighbors: # and add each neighbor to the top of the stack
                     stack.push(neighbor)
 
-    def dft_recursive(self, starting_vertex):
+    def dft_recursive(self, starting_vertex, visited=set()):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
@@ -77,7 +76,16 @@ class Graph:
 
         # smae as above just with recursion
 
-        pass  # TODO
+        if starting_vertex not in visited:
+            visited.add(starting_vertex)
+
+            neighbors = self.get_neighbors(starting_vertex)
+
+        for neighbor in neighbors:
+            self.dft_recursive(neighbor, visited)
+        
+        return visited
+
 
     def bfs(self, starting_vertex, destination_vertex):
         """
@@ -85,7 +93,9 @@ class Graph:
         starting_vertex to destination_vertex in
         breath-first order.
         """
-        pass  # TODO
+       pass
+
+
 
     def dfs(self, starting_vertex, destination_vertex):
         """
