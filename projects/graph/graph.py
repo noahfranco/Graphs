@@ -81,8 +81,8 @@ class Graph:
 
             neighbors = self.get_neighbors(starting_vertex)
 
-        for neighbor in neighbors:
-            self.dft_recursive(neighbor, visited)
+            for neighbor in neighbors:
+                self.dft_recursive(neighbor, visited)
         
         return visited
 
@@ -111,11 +111,11 @@ class Graph:
 
                 neighbors = self.get_neighbors(current_node)
 
-                for neighbor in neighbors:
-                    path_copy = current_path[:]
-                    current_path.append(neighbor)
+            for neighbor in neighbors:
+                path_copy = current_path[:]
+                current_path.append(neighbor)
 
-                    q.enqueue(current_path)
+                q.enqueue(path_copy)
 
 
 
