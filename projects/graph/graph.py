@@ -139,8 +139,8 @@ class Graph:
         while stack.size() > 0: # while our stack isn't empty
             current_node = stack.pop() # pop off what's on top this is our current_node
 
-            if current_node not in visited: # if 
-                visited.add(current_node) # iterate through the node
+            if current_node not in visited: # if a node has not been visited 
+                visited.add(current_node) #  add the node to our stack
 
                 getPath = self.get_neighbors(current_node) # getting the path from starting_vertex to destination_vertex
 
