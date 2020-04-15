@@ -103,22 +103,23 @@ class Graph:
         while q.size() > 0:
             current_path = q.dequeue()
             current_node = current_path[-1]
-            if current_path == destination_vertex:
+            # if current_node not in visited:
+            if current_node == destination_vertex:
+                print("I'm here", current_path)
                 return current_path
 
-            if current_path not in visited:
+            if current_node not in visited:
                 visited.add(current_node)
 
                 neighbors = self.get_neighbors(current_node)
 
-            for neighbor in neighbors:
-                path_copy = current_path[:]
-                current_path.append(neighbor)
+                for neighbor in neighbors:
+                    path_copy = current_path[:]
+                    current_path.append(neighbor)
 
-                q.enqueue(path_copy)
+                    q.enqueue(path_copy)
 
-
-
+            # return None
 
 
     def dfs(self, starting_vertex, destination_vertex):
