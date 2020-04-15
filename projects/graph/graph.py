@@ -146,7 +146,7 @@ class Graph:
             neighbors = self.get_neighbors(path)
 
             for neighbor in neighbors:
-                dfs_recursive(destination_vertex)
+                self.dfs_recursive(neighbor, destination_vertex)
 
         return path
 
