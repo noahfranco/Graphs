@@ -138,7 +138,29 @@ class Graph:
 
         This should be done using recursion.
         """
-        pass  # TODO
+        path = [starting_vertex]
+
+        if path not in destination_vertex:
+            destination_vertex.add(path)
+
+            neighbors = self.get_neighbors(path)
+
+            for neighbor in neighbors:
+                dfs_recursive(destination_vertex)
+
+        return path
+
+
+
+        # if starting_vertex not in visited:
+        #     visited.add(starting_vertex)
+
+        #     neighbors = self.get_neighbors(starting_vertex)
+
+        #     for neighbor in neighbors:
+        #         self.dft_recursive(neighbor, visited)
+        
+        # return visited
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
