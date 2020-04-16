@@ -128,7 +128,24 @@ class Graph:
         starting_vertex to destination_vertex in
         depth-first order.
         """
-        pass  # TODO
+        stack = Stack() # initializing a stack
+
+        path = [starting_vertex] # calling starting_vertex our path
+    
+        stack.push(path) # adding our starting vertex into the graph
+
+        visited = set() # creating an already iterated node
+
+        while stack.size() > 0: # while our stack isn't empty
+            current_node = stack.pop() # pop off what's on top this is our current_node
+
+            if current_node not in visited: # if a node has not been visited 
+                visited.add(current_node) #  add the node to our stack
+
+                getPath = self.get_neighbors(current_node) # getting the path from starting_vertex to destination_vertex
+
+                for path in getPath: # looping through our to find the path stack
+                    return path # returning the path of the dfs
 
     def dfs_recursive(self, starting_vertex, destination_vertex):
         """
@@ -138,7 +155,18 @@ class Graph:
 
         This should be done using recursion.
         """
-        pass  # TODO
+        path = [starting_vertex]
+
+        if path not in destination_vertex:
+            destination_vertex.add(path)
+
+            neighbors = self.get_neighbors(path)
+
+            for neighbor in neighbors:
+                self.dfs_recursive(neighbor, destination_vertex)
+
+        return path
+
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
